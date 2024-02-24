@@ -65,3 +65,5 @@ function playGame() {
     console.log(playRound(playerChoice.toLowerCase(), computerChoice))
     return "Computer score: " + computerScore + "," + "Player score: " + playerScore
 }
+
+
