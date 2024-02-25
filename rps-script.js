@@ -17,6 +17,25 @@ function getComputerChoice(){
 
 let computerScore = 0
 let playerScore = 0
+const gameWinner = document.querySelector('.game-winner');
+const gameOverDiv = document.querySelector('.game-over');
+const winnerDiv = document.querySelector('.winner');
+const scoreDiv = document.querySelector('.score')
+const parentDiv = document.querySelector('.main');
+
+function gameOver(){
+    if(computerScore === 5 || playerScore === 5){
+        gameOverDiv.textContent = "Game over";
+        playerScore = 0;
+        computerScore = 0;
+        if(computerScore > playerScore){
+            gameWinner.textContent = "Computer wins!";
+        }
+        else{
+            gameWinner.textContent = "Player wins!";
+        }
+    }
+}
 
 
 function playRound(playerSelection, computerSelection){
@@ -64,93 +83,31 @@ let paperChoice = document.querySelector('#paper');
 let scissorsChoice = document.querySelector('#scissors');
 
 rockChoice.addEventListener('click', () => {
-    const parentDiv = document.querySelector('.main');
-    const childDiv = document.createElement('p');
-    const score = document.createElement('p');
-    let roundOver = playRound("rock",getComputerChoice());
-    childDiv.textContent = roundOver;
-    score.textContent = "Computer: " + computerScore + " " + "Player: " + playerScore;
-    childDiv.setAttribute('style', 'margin-top: 20px');
-    parentDiv.appendChild(childDiv);
-    parentDiv.appendChild(score);
-
-    if(computerScore === 5 || playerScore === 5){
-        const parentDiv = document.querySelector('.main');
-        const gameOverMsg = document.createElement('p');
-        gameOverMsg.textContent = "Game Over";
-        parentDiv.appendChild(gameOverMsg);
-        playerScore = 0;
-        computerScore = 0;
-        if(computerScore > playerScore){
-            const computerWinsMsg = document.createElement('p');
-            computerWinsMsg.textContent = "Computer wins!";
-            parentDiv.appendChild(computerWinsMsg);
-        }
-        else{
-            const playerWinsMsg = document.createElement('p');
-            playerWinsMsg.textContent = "Player wins!";
-            parentDiv.appendChild(playerWinsMsg);
-        }
+    winnerDiv.textContent = playRound("rock",getComputerChoice());
+    scoreDiv.textContent = "Computer: " + computerScore + " " + "Player: " + playerScore;
+    gameOver();
+    if(computerScore > 5 || playerScore > 5){
+        parentDiv.removeChild(gameWinner);
+        parentDiv.removeChild(gameOverDiv);
     }
 });
 
-paperChoice.addEventListener('click', () => {
-    const parentDiv = document.querySelector('.main');
-    const childDiv = document.createElement('p');
-    const score = document.createElement('p');
-    let roundOver = playRound("paper",getComputerChoice());
-    childDiv.textContent = roundOver;
-    score.textContent = "Computer: " + computerScore + " " + "Player: " + playerScore;
-    childDiv.setAttribute('style', 'margin-top: 20px');
-    parentDiv.appendChild(childDiv);
-    parentDiv.appendChild(score);
-
-    if(computerScore === 5 || playerScore === 5){
-        const parentDiv = document.querySelector('.main');
-        const gameOverMsg = document.createElement('p');
-        gameOverMsg.textContent = "Game Over";
-        parentDiv.appendChild(gameOverMsg);
-        playerScore = 0;
-        computerScore = 0;
-        if(computerScore > playerScore){
-            const computerWinsMsg = document.createElement('p');
-            computerWinsMsg.textContent = "Computer wins!";
-            parentDiv.appendChild(computerWinsMsg);
-        }
-        else{
-            const playerWinsMsg = document.createElement('p');
-            playerWinsMsg.textContent = "Player wins!";
-            parentDiv.appendChild(playerWinsMsg);
-        }
+paperChoice.addEventListener('click', () => {;
+    winnerDiv.textContent = playRound("paper",getComputerChoice());
+    scoreDiv.textContent = "Computer: " + computerScore + " " + "Player: " + playerScore;
+    gameOver();
+    if(computerScore > 5 || playerScore > 5){
+        parentDiv.removeChild(gameWinner);
+        parentDiv.removeChild(gameOverDiv);
     }
 })
 
 scissorsChoice.addEventListener('click', () => {
-    const parentDiv = document.querySelector('.main');
-    const childDiv = document.createElement('p');
-    const score = document.createElement('p');
-    let roundOver = playRound("scissors",getComputerChoice());
-    childDiv.textContent = roundOver;
-    score.textContent = "Computer: " + computerScore + " " + "Player: " + playerScore;
-    childDiv.setAttribute('style', 'margin-top: 20px');
-    parentDiv.appendChild(childDiv);
-    parentDiv.appendChild(score);
-    playerScore = 0;
-    computerScore = 0; 
-    if(computerScore === 5 || playerScore === 5){
-        const parentDiv = document.querySelector('.main');
-        const gameOverMsg = document.createElement('p');
-        gameOverMsg.textContent = "Game Over";
-        parentDiv.appendChild(gameOverMsg);
-        if(computerScore > playerScore){
-            const computerWinsMsg = document.createElement('p');
-            computerWinsMsg.textContent = "Computer wins!";
-            parentDiv.appendChild(computerWinsMsg);
-        }
-        else{
-            const playerWinsMsg = document.createElement('p');
-            playerWinsMsg.textContent = "Player wins!";
-            parentDiv.appendChild(playerWinsMsg);
-        }
+    winnerDiv.textContent = playRound("scissors",getComputerChoice());
+    scoreDiv.textContent = "Computer: " + computerScore + " " + "Player: " + playerScore;
+    gameOver();
+    if(computerScore > 5 || playerScore > 5){
+        parentDiv.removeChild(gameWinner);
+        parentDiv.removeChild(gameOverDiv);
     }
-})
+});
