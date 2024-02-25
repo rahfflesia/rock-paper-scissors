@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="rps-script.js"></script>
+    <script src="rps-script.js" defer></script>
     <title>Rock, paper, scissors</title>
     <style>
         * {
@@ -40,7 +40,7 @@
             justify-content: space-between;
         }
 
-        .rock, .paper, .scissors {
+        #rock, #paper, #scissors {
             width: 200px;
             height: 200px;
             border: 1px black solid;
@@ -61,13 +61,13 @@
     <div class="main">
         <h2>Choose one!</h2>
         <div class="rps">
-            <div class="rock">
+            <div id="rock">
                 <img src="rock.png" alt="rock-game">
             </div>
-            <div class="paper">
+            <div id="paper">
                 <img src="paper.png" alt="paper-game">
             </div>
-            <div class="scissors">
+            <div id="scissors">
                 <img src="scissors.png" alt="scissors-game">
             </div>
         </div>
