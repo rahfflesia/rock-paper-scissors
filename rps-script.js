@@ -15,6 +15,7 @@ function getComputerChoice(){
     }
 }
 
+
 let computerScore = 0
 let playerScore = 0
 const gameWinner = document.querySelector('.game-winner');
@@ -22,18 +23,23 @@ const gameOverDiv = document.querySelector('.game-over');
 const winnerDiv = document.querySelector('.winner');
 const scoreDiv = document.querySelector('.score')
 const parentDiv = document.querySelector('.main');
+const gameInfoDiv = document.querySelector('.game-info');
 
 function gameOver(){
     if(computerScore === 5 || playerScore === 5){
         gameOverDiv.textContent = "Game over";
-        playerScore = 0;
-        computerScore = 0;
         if(computerScore > playerScore){
             gameWinner.textContent = "Computer wins!";
         }
         else{
             gameWinner.textContent = "Player wins!";
         }
+        computerScore = 0;
+        playerScore = 0;
+    }
+    else if(computerScore === 0 || playerScore === 0){
+        gameWinner.textContent = "";
+        gameOverDiv.textContent = "";
     }
 }
 
@@ -86,28 +92,17 @@ rockChoice.addEventListener('click', () => {
     winnerDiv.textContent = playRound("rock",getComputerChoice());
     scoreDiv.textContent = "Computer: " + computerScore + " " + "Player: " + playerScore;
     gameOver();
-    if(computerScore > 5 || playerScore > 5){
-        parentDiv.removeChild(gameWinner);
-        parentDiv.removeChild(gameOverDiv);
-    }
+    rockChoice.addEventListener('')
 });
 
-paperChoice.addEventListener('click', () => {;
+paperChoice.addEventListener('click', () => {
     winnerDiv.textContent = playRound("paper",getComputerChoice());
     scoreDiv.textContent = "Computer: " + computerScore + " " + "Player: " + playerScore;
     gameOver();
-    if(computerScore > 5 || playerScore > 5){
-        parentDiv.removeChild(gameWinner);
-        parentDiv.removeChild(gameOverDiv);
-    }
-})
+});
 
 scissorsChoice.addEventListener('click', () => {
     winnerDiv.textContent = playRound("scissors",getComputerChoice());
     scoreDiv.textContent = "Computer: " + computerScore + " " + "Player: " + playerScore;
     gameOver();
-    if(computerScore > 5 || playerScore > 5){
-        parentDiv.removeChild(gameWinner);
-        parentDiv.removeChild(gameOverDiv);
-    }
 });
